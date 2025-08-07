@@ -186,8 +186,8 @@ export class GameLogic {
       targetCell.state = 'hit';
       
       // Check if ship is fully sunk
-      if (this.isShipSunk(opponent.board, hitShip)) {
-        markShipAsSunk(hitShip, opponent.board);
+      if (this.isShipSunk(opponent.board.grid, hitShip)) {
+        markShipAsSunk(hitShip, opponent.board.grid);
         opponent.board.shipsRemaining--;
 
         // Check if game is over

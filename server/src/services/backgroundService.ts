@@ -29,7 +29,7 @@ export class BackgroundService {
         style: "vivid"
       });
 
-      if (!response.data[0]?.url) {
+      if (!response.data?.[0]?.url) {
         throw new Error('No image URL returned from DALL-E');
       }
 

@@ -1,22 +1,20 @@
-import express from 'express';
-import { createServer } from 'http';
-import { Server } from 'socket.io';
-import cors from 'cors';
-import helmet from 'helmet';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
+const express = require('express');
+const { createServer } = require('http');
+const { Server } = require('socket.io');
+const cors = require('cors');
+const helmet = require('helmet');
+const path = require('path');
+const dotenv = require('dotenv');
 
-import { GameService } from './services/gameService';
-import { MatchmakingService } from './services/matchmakingService';
-import { BackgroundService } from './services/backgroundService';
-import { SocketHandlers } from './sockets/socketHandlers';
+const { GameService } = require('./services/gameService');
+const { MatchmakingService } = require('./services/matchmakingService');
+const { BackgroundService } = require('./services/backgroundService');
+const { SocketHandlers } = require('./sockets/socketHandlers');
 
 // Load environment variables
 dotenv.config();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const dirname = path.resolve();
 
 const app = express();
 const server = createServer(app);
@@ -61,20 +59,20 @@ const originalFindSocketByPlayerId = (socketHandlers as any).findSocketByPlayerI
   const socketId = socketRegistry.get(playerId);
   if (!socketId) return null;
   
-  return Array.from(io.sockets.sockets.values()).find(socket => socket.id === socketId) || null;
+  return Array.from(io.sockets.sockets.values()).find((socket: any) => socket.id === socketId) || null;
 };
 
 // Socket.IO connection handling
-io.on('connection', (socket) => {
+io.on('connection', (socket: any) => {
   console.log('Player connected:', socket.id);
 
   // Register socket events
   socket.on('join-queue', () => socketHandlers.handleJoinQueue(socket));
   socket.on('leave-queue', () => socketHandlers.handleLeaveQueue(socket));
-  socket.on('place-ship', (data) => socketHandlers.handlePlaceShip(socket, data));
+  socket.on('place-ship', (data: any) => socketHandlers.handlePlaceShip(socket, data));
   socket.on('ready-to-play', () => socketHandlers.handleReadyToPlay(socket));
-  socket.on('fire-shot', (position) => socketHandlers.handleFireShot(socket, position));
-  socket.on('reconnect-game', (gameId) => socketHandlers.handleReconnectGame(socket, gameId));
+  socket.on('fire-shot', (position: any) => socketHandlers.handleFireShot(socket, position));
+  socket.on('reconnect-game', (gameId: any) => socketHandlers.handleReconnectGame(socket, gameId));
 
   // Track socket in registry
   socket.on('disconnect', async () => {
@@ -100,7 +98,7 @@ io.on('connection', (socket) => {
 });
 
 // Health check endpoint
-app.get('/health', (req, res) => {
+app.get('/health', (req: any, res: any) => {
   res.json({
     status: 'ok',
     timestamp: new Date().toISOString(),
@@ -111,14 +109,14 @@ app.get('/health', (req, res) => {
 });
 
 // API endpoint for background service status
-app.get('/api/background-status', (req, res) => {
+app.get('/api/background-status', (req: any, res: any) => {
   res.json(backgroundService.getServiceStatus());
 });
 
 // Serve client app for all other routes (SPA routing)
 if (process.env.NODE_ENV === 'production') {
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+  app.get('*', (req: any, res: any) => {
+    res.sendFile(path.join(dirname, '../../client/dist/index.html'));
   });
 }
 
