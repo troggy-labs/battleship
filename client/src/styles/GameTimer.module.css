@@ -1,0 +1,142 @@
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border-radius: 12px;
+  border: 2px solid #2196f3;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);
+  position: relative;
+  overflow: hidden;
+  min-width: 120px;
+}
+
+.timer.active {
+  border-color: #4caf50;
+  background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.timer.lowTime {
+  border-color: #ff9800;
+  background: linear-gradient(135deg, #fff3e0, #ffcc02);
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+}
+
+.timer.criticalTime {
+  border-color: #f44336;
+  background: linear-gradient(135deg, #ffebee, #ffcdd2);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+}
+
+.timerIcon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.timeDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.timeText {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1976d2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-family: 'Courier New', monospace;
+  min-width: 60px;
+  text-align: center;
+}
+
+.timer.active .timeText {
+  color: #388e3c;
+}
+
+.timer.lowTime .timeText {
+  color: #f57c00;
+}
+
+.timer.criticalTime .timeText {
+  color: #d32f2f;
+  font-weight: 900;
+}
+
+.turnIndicator {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.timer.active .turnIndicator {
+  color: #2e7d32;
+}
+
+.timer.lowTime .turnIndicator {
+  color: #e65100;
+}
+
+.timer.criticalTime .turnIndicator {
+  color: #c62828;
+}
+
+.urgentPulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, transparent, rgba(244, 67, 54, 0.2));
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .timer {
+    padding: 12px;
+    min-width: 100px;
+  }
+
+  .timerIcon {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .timeText {
+    font-size: 24px;
+    min-width: 50px;
+  }
+
+  .turnIndicator {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timer {
+    padding: 10px;
+    min-width: 90px;
+  }
+
+  .timerIcon {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .timeText {
+    font-size: 20px;
+    min-width: 45px;
+  }
+
+  .turnIndicator {
+    font-size: 9px;
+  }
+}

@@ -1,0 +1,142 @@
+.connectionStatus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  min-width: 250px;
+}
+
+.connectionStatus.connected {
+  border-color: #4caf50;
+  background: linear-gradient(135deg, #e8f5e8, #f1f8e9);
+}
+
+.connectionStatus.disconnected {
+  border-color: #ff9800;
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+}
+
+.connectionStatus.error {
+  border-color: #f44336;
+  background: linear-gradient(135deg, #ffebee, #ffcdd2);
+}
+
+.connectionStatus.reconnecting {
+  border-color: #2196f3;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+}
+
+.statusIcon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.statusContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statusText {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.connected .statusText {
+  color: #2e7d32;
+}
+
+.disconnected .statusText {
+  color: #e65100;
+}
+
+.error .statusText {
+  color: #c62828;
+}
+
+.reconnecting .statusText {
+  color: #1565c0;
+}
+
+.statusSubtext {
+  font-size: 12px;
+  opacity: 0.8;
+  line-height: 1.2;
+}
+
+.connected .statusSubtext {
+  color: #388e3c;
+}
+
+.disconnected .statusSubtext {
+  color: #f57c00;
+}
+
+.error .statusSubtext {
+  color: #d32f2f;
+}
+
+.reconnecting .statusSubtext {
+  color: #1976d2;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .connectionStatus {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    min-width: auto;
+    padding: 10px 12px;
+  }
+
+  .statusIcon {
+    font-size: 18px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .statusText {
+    font-size: 13px;
+  }
+
+  .statusSubtext {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .connectionStatus {
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .statusIcon {
+    font-size: 16px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .statusText {
+    font-size: 12px;
+  }
+
+  .statusSubtext {
+    font-size: 10px;
+  }
+}

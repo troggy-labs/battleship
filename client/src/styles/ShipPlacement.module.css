@@ -1,0 +1,328 @@
+.shipPlacement {
+  padding: 24px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0 0 12px 0;
+  color: #2c5aa0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.progress span {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.progressBar {
+  width: 200px;
+  height: 6px;
+  background-color: #e0e0e0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #8bc34a);
+  transition: width 0.3s ease;
+  border-radius: 3px;
+}
+
+.instructions {
+  background-color: #e3f2fd;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #2196f3;
+}
+
+.instructions p {
+  margin: 0;
+  font-size: 14px;
+  color: #1976d2;
+  line-height: 1.4;
+}
+
+.shipsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.shipContainer {
+  background-color: white;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 2px solid #e0e0e0;
+  transition: border-color 0.2s ease;
+}
+
+.shipContainer:hover {
+  border-color: #2196f3;
+}
+
+.shipInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.shipName {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.shipSize {
+  font-size: 12px;
+  color: #666;
+  background-color: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.shipControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ship {
+  display: flex;
+  gap: 2px;
+  padding: 8px;
+  border-radius: 6px;
+  background-color: #f5f5f5;
+  border: 2px dashed #ccc;
+  cursor: grab;
+  transition: all 0.2s ease;
+}
+
+.ship:hover {
+  border-color: #2196f3;
+  background-color: #e3f2fd;
+}
+
+.ship.dragging {
+  opacity: 0.6;
+  cursor: grabbing;
+}
+
+.ship.selected {
+  border-color: #4caf50;
+  background-color: #e8f5e8;
+}
+
+.ship.placed {
+  background-color: #c8e6c9;
+  border: 2px solid #4caf50;
+  cursor: pointer;
+}
+
+.ship.placed:hover {
+  background-color: #a5d6a7;
+}
+
+.ship.horizontal {
+  flex-direction: row;
+}
+
+.ship.vertical {
+  flex-direction: column;
+}
+
+.shipSquare {
+  width: 24px;
+  height: 24px;
+  background-color: #2196f3;
+  border-radius: 3px;
+  border: 1px solid #1976d2;
+}
+
+.ship.placed .shipSquare {
+  background-color: #4caf50;
+  border-color: #388e3c;
+}
+
+.rotateButton {
+  background-color: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.rotateButton:hover:not(:disabled) {
+  border-color: #2196f3;
+  background-color: #e3f2fd;
+}
+
+.rotateButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.placedIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4caf50;
+  margin-top: 8px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.readyButton {
+  background: linear-gradient(135deg, #4caf50, #66bb6a);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.readyButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, #66bb6a, #4caf50);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+  transform: translateY(-1px);
+}
+
+.readyButton:disabled {
+  background: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.autoPlaceButton {
+  background: linear-gradient(135deg, #ff9800, #ffb74d);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+}
+
+.autoPlaceButton:hover {
+  background: linear-gradient(135deg, #ffb74d, #ff9800);
+  box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .shipPlacement {
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  .header h2 {
+    font-size: 20px;
+  }
+
+  .progressBar {
+    width: 160px;
+  }
+
+  .shipContainer {
+    padding: 12px;
+  }
+
+  .shipName {
+    font-size: 14px;
+  }
+
+  .shipControls {
+    gap: 8px;
+  }
+
+  .ship {
+    padding: 6px;
+  }
+
+  .shipSquare {
+    width: 20px;
+    height: 20px;
+  }
+
+  .rotateButton {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .readyButton {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .shipPlacement {
+    padding: 12px;
+  }
+
+  .shipsContainer {
+    gap: 12px;
+  }
+
+  .shipContainer {
+    padding: 10px;
+  }
+
+  .shipSquare {
+    width: 18px;
+    height: 18px;
+  }
+
+  .rotateButton {
+    width: 32px;
+    height: 32px;
+  }
+}
