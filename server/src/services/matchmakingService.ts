@@ -1,5 +1,5 @@
-import { Player, Game } from '../../../shared/types.js';
-import { generateGameId, createEmptyBoard, createDefaultShips } from '../../../shared/utils.js';
+import { Player, Game } from '../shared/types';
+import { generateGameId, createEmptyBoard, createDefaultShips } from '../shared/utils';
 
 export class MatchmakingService {
   private queue: Player[] = [];

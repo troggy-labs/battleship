@@ -1,4 +1,4 @@
-import { Game, Player, Ship, Position, Board, ValidationResult } from '../../../shared/types';
+import { Game, Player, Ship, Position, Board, ValidationResult } from '../shared/types';
 import { 
   isValidPosition, 
   canPlaceShipAtPositions, 
@@ -6,7 +6,7 @@ import {
   isShipFullyHit,
   markShipAsSunk,
   positionsEqual
-} from '../../../shared/utils';
+} from '../shared/utils';
 
 export class GameLogic {
   canPlaceShip(board: Board, ship: Ship, positions: Position[]): ValidationResult {

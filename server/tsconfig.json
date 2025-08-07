@@ -9,6 +9,7 @@
     "strict": true,
     "noEmit": false,
     "outDir": "./dist",
+    "rootDir": "./src",
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
@@ -17,8 +18,7 @@
     "sourceMap": true
   },
   "include": [
-    "src/**/*",
-    "../shared/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",

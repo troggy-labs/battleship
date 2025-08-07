@@ -2,7 +2,7 @@ import { Socket } from 'socket.io';
 import { GameService } from '../services/gameService';
 import { MatchmakingService } from '../services/matchmakingService';
 import { BackgroundService } from '../services/backgroundService';
-import { Position } from '../../../shared/types.js';
+import { Position } from '../shared/types';
 
 export class SocketHandlers {
   constructor(

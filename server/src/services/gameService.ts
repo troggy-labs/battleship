@@ -1,6 +1,6 @@
-import { Game, Player, Position, Ship } from '../../../shared/types.js';
-import { GameLogic } from '../controllers/gameLogic.js';
-import { generatePlayerId, createEmptyBoard, createDefaultShips, areAllShipsPlaced } from '../../../shared/utils.js';
+import { Game, Player, Position, Ship } from '../shared/types';
+import { GameLogic } from '../controllers/gameLogic';
+import { generatePlayerId, createEmptyBoard, createDefaultShips, areAllShipsPlaced } from '../shared/utils';
 
 export class GameService {
   private games = new Map<string, Game>();
