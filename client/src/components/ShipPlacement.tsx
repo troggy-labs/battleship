@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Ship, Direction } from '../../../shared/types';
 import { getShipName } from '../../../shared/utils';

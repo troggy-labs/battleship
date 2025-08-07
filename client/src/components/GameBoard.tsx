@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Board, Ship, Position, Direction } from '../../../shared/types';
 import { getColumnLabel, getRowLabel, positionsEqual } from '../../../shared/utils';

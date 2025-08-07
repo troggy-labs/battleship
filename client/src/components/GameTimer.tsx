@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { formatTime } from '../../../shared/utils';
 import styles from '../styles/GameTimer.module.css';
