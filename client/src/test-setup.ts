@@ -25,10 +25,15 @@ global.ResizeObserver = class ResizeObserver {
 
 // Mock IntersectionObserver
 global.IntersectionObserver = class IntersectionObserver {
-  constructor(callback: IntersectionObserverCallback) {}
+  root: Element | null = null;
+  rootMargin: string = '0px';
+  thresholds: ReadonlyArray<number> = [];
+  
+  constructor(_callback: IntersectionObserverCallback) {}
   observe() {}
   unobserve() {}
   disconnect() {}
+  takeRecords = () => [];
 }
 
 // Mock HTMLCanvasElement.getContext

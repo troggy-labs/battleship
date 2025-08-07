@@ -39,7 +39,7 @@ export const useWebSocket = (url: string): UseWebSocketReturn => {
     handler: ServerEvents[K]
   ) => {
     if (socketRef.current) {
-      socketRef.current.on(event as string, handler as any);
+      socketRef.current.on(event as any, handler as any);
       eventHandlersRef.current.set(event, handler);
     }
   }, []);
@@ -49,7 +49,7 @@ export const useWebSocket = (url: string): UseWebSocketReturn => {
     handler: ServerEvents[K]
   ) => {
     if (socketRef.current) {
-      socketRef.current.off(event as string, handler as any);
+      socketRef.current.off(event as any, handler as any);
       eventHandlersRef.current.delete(event);
     }
   }, []);
@@ -106,7 +106,7 @@ export const useWebSocket = (url: string): UseWebSocketReturn => {
     return () => {
       // Remove all event handlers
       eventHandlersRef.current.forEach((handler, event) => {
-        socket.off(event as string, handler as any);
+        socket.off(event as any, handler as any);
       });
       eventHandlersRef.current.clear();
 

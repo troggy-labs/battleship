@@ -11,12 +11,12 @@ import { GameTimer } from './components/GameTimer';
 import { ConnectionStatus } from './components/ConnectionStatus';
 import { GameOverScreen } from './components/GameOverScreen';
 
-import { Position, Ship } from '../../shared/types';
+import { Position } from '../../shared/types';
 import { createEmptyBoard, generateRandomShipPlacements } from '../../shared/utils';
 
 import './styles/App.css';
 
-const SERVER_URL = import.meta.env.PROD 
+const SERVER_URL = (import.meta as any).env.PROD 
   ? window.location.origin 
   : 'http://localhost:3001';
 
@@ -43,7 +43,6 @@ function App() {
     updateCellState,
     decrementShipsRemaining,
     areAllShipsPlaced,
-    isWinner,
     getTurnTimeRemaining
   } = useGameState();
 
@@ -53,7 +52,6 @@ function App() {
     selectedShip,
     shipOrientations,
     hoveredPosition,
-    isValidPlacement,
     selectShip,
     deselectShip,
     rotateShip,
@@ -67,7 +65,7 @@ function App() {
   );
 
   // Game timer
-  const { timeRemaining, start: startTimer, formatTime } = useGameTimer();
+  const { timeRemaining, start: startTimer } = useGameTimer();
 
   // Socket event handlers
   useEffect(() => {
@@ -103,7 +101,7 @@ function App() {
         turnStartTime: gameState.turnStartTime
       };
       
-      setGame(reconstructedGame);
+      setGame(reconstructedGame as any);
       
       if (gameState.background && gameState.background !== backgroundImage) {
         setBackgroundImage(gameState.background);
@@ -111,7 +109,7 @@ function App() {
 
       // Start turn timer if it's the playing phase
       if (gameState.phase === 'playing' && gameState.turnStartTime) {
-        const remaining = getTurnTimeRemaining(reconstructedGame);
+        const remaining = getTurnTimeRemaining(reconstructedGame as any);
         if (remaining > 0) {
           startTimer(remaining);
         }
@@ -126,7 +124,7 @@ function App() {
       }
     };
 
-    const handleShotResult = (data: any) => {
+    const handleShotResult = () => {
       // Shot results are now handled entirely by game state updates from server
     };
 

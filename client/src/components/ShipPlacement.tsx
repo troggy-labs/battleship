@@ -115,7 +115,7 @@ export const ShipPlacement: React.FC<ShipPlacementProps> = ({
               </div>
               
               <div className={styles.shipControls}>
-                <motion.div
+                <div
                   className={getShipClassName(ship)}
                   data-testid={`ship-${ship.id}`}
                   draggable={!ship.isPlaced}
@@ -123,13 +123,11 @@ export const ShipPlacement: React.FC<ShipPlacementProps> = ({
                   onDoubleClick={() => handleShipDoubleClick(ship)}
                   onDragStart={(e) => handleDragStart(e, ship)}
                   onDragEnd={handleDragEnd}
-                  whileHover={{ scale: ship.isPlaced ? 1 : 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                 >
                   {Array.from({ length: ship.size }, (_, index) => (
                     <div key={index} className={styles.shipSquare} />
                   ))}
-                </motion.div>
+                </div>
 
                 <button
                   className={styles.rotateButton}
